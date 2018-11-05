@@ -19,13 +19,11 @@
           let provider = ethers.getDefaultProvider();
 
           // get block number
-          var bNumber = await provider.getBlockNumber();
+          let bNumber = await provider.getBlockNumber();
 
-          block = await provider.getBlock();
+          block = await provider.getBlock(bNumber);
 
-          printBlock(block);
-
-          for (i = 0; i < 9; i ++){
+          for (i = 0; i < 10; i ++){
 
             block.hash = block.parentHash;
             printBlock(block);
