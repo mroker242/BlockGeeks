@@ -354,8 +354,14 @@ contract RewardPoints {
         // add to total redeemed points
         users[senderId].totalReedemedPoints += _points;
         
+        // take away from totalEarnedPoints
+        users[senderId].totalEarnedPoints -= _points;
+        
         // add to merchant to redeemed points
         users[senderId].merchantToRedeemedPts[_mId] += _points;
+        
+        // remove points from merchant to earned points
+        users[senderId].merchantToEarnedPts[_mId] -= _points;
         
         emit RedeemedPoints(msg.sender, _mId, _points);
         
